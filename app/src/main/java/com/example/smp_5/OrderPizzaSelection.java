@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,6 +28,7 @@ public class OrderPizzaSelection extends AppCompatActivity {
     private CheckBox extraCheese;
     private TextView priceTV;
     private Double price;
+    private Button addToCart;
     ArrayList<String> pizzaSizeOptions;
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -47,6 +50,7 @@ public class OrderPizzaSelection extends AppCompatActivity {
         extraSauce = findViewById(R.id.extraSauceCheckbox);
         extraCheese = findViewById(R.id.extraCheeseCheckbox);
         priceTV = findViewById(R.id.priceTextView);
+        addToCart = findViewById(R.id.addToCart);
 
         pizzaName.setText(pizza);
         toppingsDesc.setText(toppings);
@@ -55,6 +59,7 @@ public class OrderPizzaSelection extends AppCompatActivity {
         initializeSpinner(pizzaSize);
         spinnerListener();
         checkboxListener(extraSauce, extraCheese);
+        ButtonListener();
 
         updatePrice(price, pizzaSize.getSelectedItem().toString(), extraSauce.isChecked(), extraCheese.isChecked());
 
@@ -96,6 +101,14 @@ public class OrderPizzaSelection extends AppCompatActivity {
      extraCheese.setOnCheckedChangeListener((buttonView, isChecked) -> {
          updatePrice(price, pizzaSize.getSelectedItem().toString(), extraSauce.isChecked(), isChecked);
      });
+ }
+ public void ButtonListener(){
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Added To Cart", Toast.LENGTH_SHORT).show();
+            }
+        });
  }
     public void updatePrice(Double price, String size, boolean extraSauce, boolean extraCheese){
         double pizzaPrice = 0.00;

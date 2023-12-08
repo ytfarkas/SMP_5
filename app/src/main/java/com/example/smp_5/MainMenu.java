@@ -9,13 +9,31 @@ import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity {
 
+    private Button orderPizza;
+    private Button buildYourOwn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        Button orderPizza = findViewById(R.id.orderButton);
+        orderPizza = findViewById(R.id.orderButton);
+        OrderPizzaListener();
+        buildYourOwn = findViewById((R.id.buildYourOwnButton));
+        BuildYourOwnListener();
 
+    }
+
+    private void BuildYourOwnListener() {
+        buildYourOwn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainMenu.this, BuildYourOwn.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void OrderPizzaListener() {
         orderPizza.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
