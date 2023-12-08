@@ -9,8 +9,16 @@ import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity {
 
+
+    private OrderData orderData;
     private Button orderPizza;
     private Button buildYourOwn;
+
+    private Button currentorder;
+
+    private Button storeorders;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,13 +29,21 @@ public class MainMenu extends AppCompatActivity {
         buildYourOwn = findViewById((R.id.buildYourOwnButton));
         BuildYourOwnListener();
 
+        currentorder = findViewById(R.id.currentOrderButton);
+        currentOrderListener();
+
+        storeorders = findViewById(R.id.storeOrderButton);
+        storeOrdersListener();
+
+        orderData = OrderData.getOrderData();
     }
+
 
     private void BuildYourOwnListener() {
         buildYourOwn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainMenu.this, BuildYourOwn.class);
+                Intent intent = new Intent(MainMenu.this, BuildYourOwnScreen.class);
                 startActivity(intent);
             }
         });
@@ -38,6 +54,28 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainMenu.this, OrderPizza.class);
+                startActivity(intent);
+
+            }
+        });
+    }
+
+    private void currentOrderListener() {
+        orderPizza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainMenu.this, CurrentOrderScreen.class);
+                startActivity(intent);
+
+            }
+        });
+    }
+
+    private void storeOrdersListener() {
+        orderPizza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainMenu.this, StoreOrdersScreen.class);
                 startActivity(intent);
 
             }
