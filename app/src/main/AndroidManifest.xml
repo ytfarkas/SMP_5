@@ -27,7 +27,13 @@
             android:name=".OrderPizzaSelection">
         </activity>
         <activity
-            android:name=".BuildYourOwn">
+            android:name=".BuildYourOwnScreen">
+        </activity>
+        <activity
+            android:name=".CurrentOrderScreen">
+        </activity>
+        <activity
+            android:name=".StoreOrdersScreen">
         </activity>
     </application>
 

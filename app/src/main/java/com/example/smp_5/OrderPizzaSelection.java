@@ -20,6 +20,8 @@ import com.google.android.material.navigation.NavigationBarView;
 import java.util.ArrayList;
 
 public class OrderPizzaSelection extends AppCompatActivity {
+
+    private OrderData orderData;
     private Spinner pizzaSize;
     private TextView pizzaName;
     private TextView toppingsDesc;
@@ -34,6 +36,8 @@ public class OrderPizzaSelection extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_pizza_selection);
+
+        orderData = OrderData.getOrderData();
 
         String pizza = getIntent().getStringExtra("Name");
         String toppings = getIntent().getStringExtra("Toppings");
@@ -59,7 +63,7 @@ public class OrderPizzaSelection extends AppCompatActivity {
         initializeSpinner(pizzaSize);
         spinnerListener();
         checkboxListener(extraSauce, extraCheese);
-        ButtonListener();
+        AddToCartButtonListener();
 
         updatePrice(price, pizzaSize.getSelectedItem().toString(), extraSauce.isChecked(), extraCheese.isChecked());
 
@@ -102,10 +106,16 @@ public class OrderPizzaSelection extends AppCompatActivity {
          updatePrice(price, pizzaSize.getSelectedItem().toString(), extraSauce.isChecked(), isChecked);
      });
  }
- public void ButtonListener(){
+ public void AddToCartButtonListener(){
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Pizza pizza =  PizzaMaker.createPizza(pizzaName.getText().toString());
+                pizza.size = Size.valueOf(pizzaSize.getSelectedItem().toString().toUpperCase());
+                pizza.extraCheese = extraCheese.isSelected();
+                pizza.extraSauce = extraSauce.isSelected();
+                orderData.addToCurrentOrder(pizza);
                 Toast.makeText(getApplicationContext(), "Added To Cart", Toast.LENGTH_SHORT).show();
             }
         });

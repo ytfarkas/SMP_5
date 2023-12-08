@@ -1,23 +1,21 @@
 package com.example.smp_5;
 
-import android.database.Observable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.ObservableArrayList;
-
 import java.util.ArrayList;
-import java.util.Collections;
 
-public class BuildYourOwn extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class BuildYourOwnScreen extends AppCompatActivity {
+
+    private OrderData orderData;
     private ListView toppingsList;
     private Button addToCartButton;
     private CheckBox extraSauce;
@@ -27,16 +25,10 @@ public class BuildYourOwn extends AppCompatActivity implements AdapterView.OnIte
     private Spinner sauce;
     private ArrayList<String> pizzaSizeOption;
     private ArrayList<String> pizzaSauceOption;
-
-    ObservableArrayList<String> list = new ObservableArrayList<>();
-    String[] toppings = {"Onion", "Mushrooms", "Artichoke", "Green Olives", "Black Olives", "Sausage", "Crab Meat",
-            "Beyond Beef", "Tomato", "Squid"};
-    private ArrayAdapter<String> adapter;
-
-    @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.build_your_own);
+        orderData = OrderData.getOrderData();
         Initialize();
     }
     public void Initialize(){
@@ -50,9 +42,7 @@ public class BuildYourOwn extends AppCompatActivity implements AdapterView.OnIte
 
         InitializeSpinners();
         PopulateSpinner();
-
-        PopulateToppingList();
-
+        AddToCartButtonListener();
     }
     public void InitializeSpinners(){
         pizzaSauceOption = new ArrayList<>();
@@ -74,28 +64,18 @@ public class BuildYourOwn extends AppCompatActivity implements AdapterView.OnIte
         sauce.setAdapter(sauceAdapter);
     }
 
-    public void PopulateToppingList(){
-        toppingsList.setChoiceMode(toppingsList.CHOICE_MODE_MULTIPLE);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, list);
-        Collections.addAll(list, toppings);
-        toppingsList.setAdapter(adapter);
-        ArrayList<String> selectedTopping = new ArrayList<>();
-        toppingsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    public void AddToCartButtonListener(){
+        addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                toppingsList.setItemChecked(position, toppingsList.isItemChecked(position));
-                if (toppingsList.isItemChecked(position)){
-                    selectedTopping.add(list.get(position));
-                } else{
-                    selectedTopping.remove(list.get(position));
-                }
+            public void onClick(View v) {
+
+                Pizza pizza =  PizzaMaker.createPizza("");
+                pizza.size = Size.valueOf(size.getSelectedItem().toString().toUpperCase());
+                pizza.extraCheese = extraCheese.isSelected();
+                pizza.extraSauce = extraSauce.isSelected();
+                orderData.addToCurrentOrder(pizza);
+                Toast.makeText(getApplicationContext(), "Added To Cart", Toast.LENGTH_SHORT).show();
             }
         });
-
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
     }
 }
