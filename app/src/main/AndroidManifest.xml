@@ -26,6 +26,9 @@
         <activity
             android:name=".OrderPizzaSelection">
         </activity>
+        <activity
+            android:name=".BuildYourOwn">
+        </activity>
     </application>
 
 </manifest>
