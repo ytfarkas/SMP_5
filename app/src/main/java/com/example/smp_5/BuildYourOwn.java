@@ -13,6 +13,7 @@ public class BuildYourOwn extends Pizza {
      * BuildYourOwn is the constructor for a custom pizza
      */
     public BuildYourOwn() {
+        toppings = new ArrayList<Topping>();
     }
 
     /**

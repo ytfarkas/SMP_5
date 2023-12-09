@@ -9,12 +9,15 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
 public class StoreOrdersScreen extends AppCompatActivity {
+
+    private ArrayAdapter<String> pizzaListAdapter;
 
     private OrderData storeOrderData;
     private Spinner orderID;
@@ -37,6 +40,7 @@ public class StoreOrdersScreen extends AppCompatActivity {
 
         PopulateSpinner();
         InitializeSpinnerListener();
+        RemoveButtonListener();
     }
 
     public void PopulateSpinner(){
@@ -44,6 +48,9 @@ public class StoreOrdersScreen extends AppCompatActivity {
         ArrayList<Integer> ID = new ArrayList<>();
         for(Order order: orderList){
             ID.add(order.getID());
+        }
+        if(ID.isEmpty()){
+            removeButton.setEnabled(false);
         }
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ID);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -59,18 +66,32 @@ public class StoreOrdersScreen extends AppCompatActivity {
                 ArrayList<String> pizzaString = new ArrayList<String>();
                 for (Order order: orderList){
                     if(order.getID() == orderNum){
+                        subtotal.setText(String.format("%,.2f", order.getTotalPrice()));
                         for(Pizza pizza : order.getOrderList()){
                             pizzaString.add(pizza.toString());
                         }
                     }
                 }
-                ArrayAdapter<String> pizzaListAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, pizzaString);
+                pizzaListAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, pizzaString);
                 ordersListView.setAdapter(pizzaListAdapter);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+    }
+
+    private void RemoveButtonListener(){
+        removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                storeOrderData.cancelOrder((int) orderID.getSelectedItem());
+                pizzaListAdapter.clear();
+                subtotal.setText("");
+                PopulateSpinner();
+                Toast.makeText(getApplicationContext(), "Pizza Removed!", Toast.LENGTH_SHORT).show();
             }
         });
     }

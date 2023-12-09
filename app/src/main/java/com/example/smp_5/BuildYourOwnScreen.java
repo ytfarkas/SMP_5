@@ -191,16 +191,16 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
                     }
                     pizza.extraCheese = extraCheese.isSelected();
                     pizza.extraSauce = extraSauce.isSelected();
-                    ArrayList<Topping> top = new ArrayList<>();
+
                     for(String topping : selectedTopping){
                         if(topping.contains(" ")){
-                            top.add(Topping.valueOf(topping.toUpperCase().replace(" ", "_")));
+                            pizza.toppings.add(Topping.valueOf(topping.toUpperCase().replace(" ", "_")));
                         }
                         else {
-                            top.add(Topping.valueOf(topping.toUpperCase()));
+                            pizza.toppings.add(Topping.valueOf(topping.toUpperCase()));
                         }
                     }
-                    pizza.toppings = top;
+
                     orderdata.addToCurrentOrder(pizza);
                     Toast.makeText(getApplicationContext(), "Added To Cart", Toast.LENGTH_SHORT).show();
                 }
