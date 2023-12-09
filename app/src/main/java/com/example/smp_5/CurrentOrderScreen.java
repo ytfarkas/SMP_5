@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CurrentOrderScreen extends AppCompatActivity {
 
-
+    private int checkedPosition = -1;
     private OrderData orderData;
     private Button placeOrder;
     private Button removePizza;
@@ -42,11 +42,11 @@ public class CurrentOrderScreen extends AppCompatActivity {
         total = findViewById(R.id.orderTotal);
         subtotal = findViewById(R.id.orderSubTotal);
         pizzas=findViewById(R.id.pizzaList);
-        pizzas.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         PlaceOrderButtonListener();
         RemovePizzaButtonListener();
         setOrderText();
         setPrices();
+        removePizza.setEnabled(false);
     }
 
     private void setOrderText(){
@@ -66,14 +66,20 @@ public class CurrentOrderScreen extends AppCompatActivity {
                     pizzaStrings
             );
             pizzas.setAdapter(pizzaListAdapter);
+            pizzas.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
             pizzas.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                 @Override
                 public void onItemClick(AdapterView<?> Parent, View view, int position, long id) {
-                    if(pizzas.isItemChecked(position)){
-                        pizzas.setItemChecked(position,true);
+                    if(checkedPosition == position){
+                        checkedPosition = -1;
+                        pizzas.setItemChecked(position, false);
+                        removePizza.setEnabled(false);
+
                     }
                     else{
-                        pizzas.setItemChecked(position, false);
+                        pizzas.setItemChecked(position, true);
+                        removePizza.setEnabled(true);
+                        checkedPosition = position;
                     }
                 }
             });
@@ -97,6 +103,7 @@ public class CurrentOrderScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 orderData.removePizza(pizzas.getCheckedItemPosition());
+                removePizza.setEnabled(false);
                 setOrderText();
                 setPrices();
                 Toast.makeText(getApplicationContext(), "Pizza Removed!", Toast.LENGTH_SHORT).show();

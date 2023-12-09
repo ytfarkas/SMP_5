@@ -44,4 +44,11 @@ final class OrderData {
     public void removePizza(int index){
         currentOrder.removePizza(index);
     }
+
+    public void printOrder(){
+        for(Pizza order : currentOrder.getOrderList()){
+            System.out.println(order.toString());
+
+        }
+    }
 }
