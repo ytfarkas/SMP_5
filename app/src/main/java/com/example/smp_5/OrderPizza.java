@@ -35,9 +35,9 @@ public class OrderPizza extends AppCompatActivity implements RecyclerClickInterf
         pizzaTypes.add(new PizzaType("Meatzza", "Tomato Sauce, Sausage, Pepperoni, Beef, Ham", R.drawable.meatzza, null, 16.99));
         pizzaTypes.add(new PizzaType("Seafood", "Alfredo Sauce, Shrimp, Squid, Crab Meats", R.drawable.seafoodpizza, null, 17.99));
         pizzaTypes.add(new PizzaType("Pepperoni", "Tomato Sauce, Pepperoni", R.drawable.pepperonipizza, null, 10.99));
-        pizzaTypes.add(new PizzaType("Beyond Pizza", "Tomato Sauce, Beyond Meat, Beyond Bacon", R.drawable.beyondpizza, null, 16.99));
-        pizzaTypes.add(new PizzaType("Onion Pizza", "Tomato Sauce, Onions", R.drawable.onionpizza, null, 10.99));
-        pizzaTypes.add(new PizzaType("Artichoke Pizza", "Tomato Sauce, Artichoke", R.drawable.artichokepizza, null, 10.99));
+        pizzaTypes.add(new PizzaType("Beyond", "Tomato Sauce, Beyond Meat, Beyond Bacon", R.drawable.beyondpizza, null, 16.99));
+        pizzaTypes.add(new PizzaType("Onion", "Tomato Sauce, Onions", R.drawable.onionpizza, null, 10.99));
+        pizzaTypes.add(new PizzaType("Artichoke", "Tomato Sauce, Artichoke", R.drawable.artichokepizza, null, 10.99));
         pizzaTypes.add(new PizzaType("Penne", "Penne Vodka, Cheese", R.drawable.specialtypizza, null, 17.99));
 
         return pizzaTypes;

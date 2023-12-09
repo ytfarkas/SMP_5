@@ -12,6 +12,7 @@ public enum Topping
     HAM,
     BEEF,
     BEYOND_BEEF,
+    BEYOND_BACON,
     GREEN_PEPPER,
     ONION,
     BLACK_OLIVE,
@@ -19,5 +20,6 @@ public enum Topping
     ARTICHOKE,
     SHRIMP,
     SQUID,
-    CRAB_MEAT
+    CRAB_MEAT,
+    Cheese,
 }
