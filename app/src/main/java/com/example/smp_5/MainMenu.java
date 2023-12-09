@@ -61,7 +61,7 @@ public class MainMenu extends AppCompatActivity {
     }
 
     private void currentOrderListener() {
-        orderPizza.setOnClickListener(new View.OnClickListener() {
+        currentorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainMenu.this, CurrentOrderScreen.class);
@@ -72,7 +72,7 @@ public class MainMenu extends AppCompatActivity {
     }
 
     private void storeOrdersListener() {
-        orderPizza.setOnClickListener(new View.OnClickListener() {
+        storeorders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainMenu.this, StoreOrdersScreen.class);

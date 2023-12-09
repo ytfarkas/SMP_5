@@ -30,9 +30,18 @@ final class OrderData {
         return storeOrders;
     }
     public void addToStoreOrders(){
+
         storeOrders.addOrder(currentOrder);
+        currentOrder = new Order(storeOrders.getCurrentOrderNumber(), new ArrayList<Pizza>());
     }
     public void addToCurrentOrder(Pizza pizza){
         currentOrder.addToOrder(pizza);
+    }
+
+    public void cancelOrder(int id){
+        storeOrders.cancelOrder(id);
+    }
+    public void removePizza(int index){
+        currentOrder.removePizza(index);
     }
 }
