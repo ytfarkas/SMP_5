@@ -27,6 +27,16 @@ public class PizzaMaker {
             pizza = new Supreme();
         } else if (pizzaType.equals("Deluxe")) {
             pizza = new Deluxe();
+        }else if (pizzaType.equals("Cheese")){
+            pizza = new Cheese();
+        }else if (pizzaType.equals("Beyond")){
+            pizza = new Beyond();
+        }else if (pizzaType.equals("Onion")){
+            pizza = new Onion();
+        } else if (pizzaType.equals("Artichoke")){
+            pizza = new Artichoke();
+        }else if (pizzaType.equals("Penne")){
+            pizza = new Penne();
         } else {  //build your own
             pizza = new BuildYourOwn();
         }

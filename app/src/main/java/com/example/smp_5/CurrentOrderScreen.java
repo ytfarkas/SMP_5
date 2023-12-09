@@ -96,7 +96,7 @@ public class CurrentOrderScreen extends AppCompatActivity {
         removePizza.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                orderData.cancelOrder(pizzas.getCheckedItemPosition());
+                orderData.removePizza(pizzas.getCheckedItemPosition());
                 setOrderText();
                 setPrices();
                 Toast.makeText(getApplicationContext(), "Pizza Removed!", Toast.LENGTH_SHORT).show();
