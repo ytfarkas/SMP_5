@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.ObservableArrayList;
@@ -21,6 +22,9 @@ import java.util.Collections;
 
 public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView toppingsList;
+
+    private OrderData orderdata;
+
     private Button addToCartButton;
     private CheckBox extraSauce;
     private CheckBox extraCheese;
@@ -32,7 +36,7 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
     private Context context;
     private ArrayList<String> selectedTopping;
     ObservableArrayList<String> list = new ObservableArrayList<>();
-    String[] toppings = {"Onion", "Mushrooms", "Artichoke", "Green Olives", "Black Olives", "Sausage", "Crab Meat",
+    String[] toppings = {"Onion", "Mushroom", "Artichoke", "Green Pepper", "Black Olive", "Sausage", "Crab Meat",
             "Beyond Beef", "Tomato", "Squid"};
     private ArrayAdapter<String> adapter;
 
@@ -40,6 +44,7 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.build_your_own);
+        orderdata = OrderData.getOrderData();
         context = this;
         Initialize();
     }
@@ -51,7 +56,7 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
         price = findViewById(R.id.bYOPriceTextView);
         size = findViewById(R.id.bYOSizeSpinner);
         sauce = findViewById(R.id.bYOSauceSpinner);
-
+        addToCartButton.setEnabled(false);
         InitializeSpinners();
         PopulateSpinner();
         PopulateToppingList();
@@ -59,6 +64,7 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
         InitializeSpinnerListener();
         InitializeCheckboxListener();
         InitializeButtonListener();
+        AddToCartButtonListener();
 
     }
     public void InitializeSpinners(){
@@ -112,9 +118,15 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (toppingsList.isItemChecked(position)) {
+
+
+
                     if (selectedTopping.size() < 7) {
                         toppingsList.setItemChecked(position, true);
                         selectedTopping.add(list.get(position));
+                        if(selectedTopping.size() > 2){
+                            addToCartButton.setEnabled(true);
+                        }
                     } else {
                         toppingsList.setItemChecked(position, false);
                         MyAlert.showAlertDialog(context, "Too Many Toppings", "Toppings Cannot Exceed 7");
@@ -123,6 +135,9 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
                 else {
                     toppingsList.setItemChecked(position, false);
                     selectedTopping.remove(list.get(position));
+                    if(selectedTopping.size() < 3) {
+                        addToCartButton.setEnabled(false);
+                    }
                 }
                 updatePrice();
 
@@ -157,5 +172,36 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+    }
+
+    public void AddToCartButtonListener(){
+        addToCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    Pizza pizza = PizzaMaker.createPizza("");
+                    pizza.size = Size.valueOf(size.getSelectedItem().toString().toUpperCase());
+                    if(sauce.getSelectedItem().toString().contains(" ")){
+                        pizza.sauce = Sauce.valueOf(sauce.getSelectedItem().toString().toUpperCase().replace(" ", "_"));
+                    }
+                    else{
+                        pizza.sauce = Sauce.valueOf(sauce.getSelectedItem().toString().toUpperCase());
+                    }
+                    pizza.extraCheese = extraCheese.isSelected();
+                    pizza.extraSauce = extraSauce.isSelected();
+                    ArrayList<Topping> top = new ArrayList<>();
+                    for(String topping : selectedTopping){
+                        if(topping.contains(" ")){
+                            top.add(Topping.valueOf(topping.toUpperCase().replace(" ", "_")));
+                        }
+                        else {
+                            top.add(Topping.valueOf(topping.toUpperCase()));
+                        }
+                    }
+                    pizza.toppings = top;
+                    orderdata.addToCurrentOrder(pizza);
+                    Toast.makeText(getApplicationContext(), "Added To Cart", Toast.LENGTH_SHORT).show();
+                }
+
+        });
     }
 }

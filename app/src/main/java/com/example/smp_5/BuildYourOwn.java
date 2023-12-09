@@ -62,8 +62,14 @@ public class BuildYourOwn extends Pizza {
             }
         }
 
+        String sc = sauce.name();
+        if(sc.contains("_")){
+            sc = sc.replace("_", " ");
+        }
+
+
         String str = "[BuildYourOwn] " + tpngs +
-                size.name() + " " + sauce.name() + " ";
+                size.name() + " " + sc + " ";
 
         if (extraSauce) {
             str = str + "extra Sauce ";
