@@ -111,6 +111,7 @@ public class OrderPizzaSelection extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                System.out.println(pizzaName.getText().toString());
                 Pizza pizza =  PizzaMaker.createPizza(pizzaName.getText().toString());
                 pizza.size = Size.valueOf(pizzaSize.getSelectedItem().toString().toUpperCase());
                 pizza.extraCheese = extraCheese.isSelected();

@@ -28,7 +28,7 @@ public class PizzaMaker {
         } else if (pizzaType.equals("Deluxe")) {
             pizza = new Deluxe();
         } else {  //build your own
-            pizza = new BuildYourOwnScreen();
+            pizza = new BuildYourOwn();
         }
         return pizza;
         //not sure if there needs to be a case for if the string is incorrect
