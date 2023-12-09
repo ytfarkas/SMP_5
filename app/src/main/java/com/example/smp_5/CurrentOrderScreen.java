@@ -25,6 +25,7 @@ public class CurrentOrderScreen extends AppCompatActivity {
     private Button removePizza;
     private TextView total;
     private TextView subtotal;
+    private TextView Tax;
     private ListView pizzas;
 
     @Override
@@ -41,6 +42,7 @@ public class CurrentOrderScreen extends AppCompatActivity {
         removePizza = findViewById(R.id.removePizzaButton);
         total = findViewById(R.id.orderTotal);
         subtotal = findViewById(R.id.orderSubTotal);
+        Tax = findViewById(R.id.salesTax);
         pizzas=findViewById(R.id.pizzaList);
         PlaceOrderButtonListener();
         RemovePizzaButtonListener();
@@ -85,16 +87,21 @@ public class CurrentOrderScreen extends AppCompatActivity {
             });
 
         }
+        else{
+            placeOrder.setEnabled(false);
+        }
     }
 
     private void setPrices(){
         if(orderData.getCurrentOrder().getOrderList().isEmpty()){
             subtotal.setText("0.00");
             total.setText("0.00");
+            Tax.setText("0.00");
         }
         else{
             subtotal.setText(String.format("%,.2f",orderData.getCurrentOrder().getSubtotal()));
             total.setText(String.format("%,.2f", orderData.getCurrentOrder().getTotalPrice()));
+            Tax.setText(String.format("%,.2f",orderData.getCurrentOrder().getTotalPrice() - orderData.getCurrentOrder().getSubtotal()));
         }
     }
 
