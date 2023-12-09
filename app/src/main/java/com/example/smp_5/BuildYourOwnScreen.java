@@ -145,6 +145,9 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
         });
     }
     public void InitializeButtonListener(){
+        if (selectedTopping.size() > 3){
+
+        }
 
     }
     public void updatePrice() {
