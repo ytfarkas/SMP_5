@@ -49,6 +49,8 @@ public class CurrentOrderScreen extends AppCompatActivity {
         setOrderText();
         setPrices();
         removePizza.setEnabled(false);
+        removePizza.setAlpha(0.5f);
+
     }
 
     private void setOrderText(){
@@ -75,11 +77,13 @@ public class CurrentOrderScreen extends AppCompatActivity {
                     if(checkedPosition == position){
                         checkedPosition = -1;
                         pizzas.setItemChecked(position, false);
+                        removePizza.setAlpha(0.5f);
                         removePizza.setEnabled(false);
 
                     }
                     else{
                         pizzas.setItemChecked(position, true);
+                        removePizza.setAlpha(1.0f);
                         removePizza.setEnabled(true);
                         checkedPosition = position;
                     }
@@ -88,6 +92,7 @@ public class CurrentOrderScreen extends AppCompatActivity {
 
         }
         else{
+            placeOrder.setAlpha(0.5f);
             placeOrder.setEnabled(false);
         }
     }

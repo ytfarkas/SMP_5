@@ -11,7 +11,7 @@
         android:layout_height="44dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Current Order"
+        android:text="@string/current_orders"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/pizzaList"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +45,7 @@
         android:layout_marginBottom="204dp"
         android:ems="10"
         android:inputType="text"
-        android:text="SubTotal:"
+        android:text="@string/subtotal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -57,7 +57,7 @@
         android:layout_marginBottom="20dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Total:"
+        android:text="@string/total"
         app:layout_constraintBottom_toTopOf="@+id/placeOrderButton"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -73,10 +73,11 @@
 
     <Button
         android:id="@+id/placeOrderButton"
+        style="@style/ButtonStyle"
         android:layout_width="138dp"
         android:layout_height="81dp"
         android:layout_marginStart="16dp"
-        android:text="Place Order"
+        android:text="@string/place_order"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/removePizzaButton"
@@ -87,9 +88,10 @@
 
     <Button
         android:id="@+id/removePizzaButton"
+        style="@style/ButtonStyle"
         android:layout_width="142dp"
         android:layout_height="82dp"
-        android:text="Remove Pizza"
+        android:text="@string/remove_pizza"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,7 +117,7 @@
         android:layout_marginBottom="28dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Sales Tax:"
+        android:text=""
         app:layout_constraintBottom_toTopOf="@+id/editTextText4"
         app:layout_constraintStart_toStartOf="parent" />
 

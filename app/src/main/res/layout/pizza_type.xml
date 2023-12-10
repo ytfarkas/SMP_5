@@ -10,7 +10,7 @@
         android:layout_width="172dp"
         android:layout_height="23dp"
         android:layout_marginTop="4dp"
-        android:text="Pizza Type"
+        android:text="@string/pizza_type"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.129"
         app:layout_constraintStart_toEndOf="@+id/pizzaPhoto"
@@ -24,14 +24,15 @@
         android:layout_marginEnd="296dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/deluxepizza" />
+        app:srcCompat="@drawable/deluxepizza"
+        android:contentDescription="@string/pizza_photo" />
 
     <TextView
         android:id="@+id/toppingNames"
         android:layout_width="261dp"
         android:layout_height="36dp"
         android:layout_marginTop="4dp"
-        android:text="Toppings"
+        android:text="@string/toppings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toEndOf="@+id/pizzaPhoto"
@@ -41,7 +42,7 @@
         android:id="@+id/priceTextV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Price"
+        android:text="@string/price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toEndOf="@+id/pizzaPhoto"

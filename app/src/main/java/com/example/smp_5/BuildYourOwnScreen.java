@@ -56,6 +56,7 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
         price = findViewById(R.id.bYOPriceTextView);
         size = findViewById(R.id.bYOSizeSpinner);
         sauce = findViewById(R.id.bYOSauceSpinner);
+        addToCartButton.setAlpha(0.5f);
         addToCartButton.setEnabled(false);
         InitializeSpinners();
         PopulateSpinner();
@@ -63,7 +64,6 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
         updatePrice();
         InitializeSpinnerListener();
         InitializeCheckboxListener();
-        InitializeButtonListener();
         AddToCartButtonListener();
 
     }
@@ -125,6 +125,7 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
                         toppingsList.setItemChecked(position, true);
                         selectedTopping.add(list.get(position));
                         if(selectedTopping.size() > 2){
+                            addToCartButton.setAlpha(1.0f);
                             addToCartButton.setEnabled(true);
                         }
                     } else {
@@ -136,6 +137,7 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
                     toppingsList.setItemChecked(position, false);
                     selectedTopping.remove(list.get(position));
                     if(selectedTopping.size() < 3) {
+                        addToCartButton.setAlpha(0.5f);
                         addToCartButton.setEnabled(false);
                     }
                 }
@@ -143,12 +145,6 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
 
             }
         });
-    }
-    public void InitializeButtonListener(){
-        if (selectedTopping.size() > 3){
-
-        }
-
     }
     public void updatePrice() {
         double updatePrice = 0.00;

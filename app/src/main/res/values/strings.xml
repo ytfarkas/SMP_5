@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">SMP_5</string>
+    <string name="app_name">D&amp;Y Pizza</string>
+    <string name="add_to_cart">Add To Cart</string>
+    <string name="price">Price</string>
+    <string name="extra_sauce">Extra Sauce</string>
+    <string name="extra_cheese">Extra Cheese</string>
+    <string name="order_pizza">Order Pizza</string>
+    <string name="current_orders">Current Order</string>
+    <string name="store_orders">Store Orders</string>
+    <string name="build_your_own">Build Your Own</string>
+    <string name="subtotal">SubTotal:</string>
+    <string name="total">Total:</string>
+    <string name="place_order">Place Order</string>
+    <string name="remove_pizza">Remove Pizza</string>
+    <string name="pizza_type">Pizza Type</string>
+    <string name="toppings">Toppings</string>
+    <string name="cancel_order">Cancel Order</string>
+    <string name="pizza_photo">Pizza Photo</string>
+    <string name="pizza_name">Pizza Name</string>
 </resources>
