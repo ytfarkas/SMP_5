@@ -50,6 +50,7 @@ public class StoreOrdersScreen extends AppCompatActivity {
             ID.add(order.getID());
         }
         if(ID.isEmpty()){
+            removeButton.setAlpha(0.5f);
             removeButton.setEnabled(false);
         }
         ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ID);

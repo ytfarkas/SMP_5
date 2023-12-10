@@ -9,7 +9,7 @@
     <Button
         android:id="@+id/orderButton"
         style="@style/ButtonStyle"
-        android:text="Order Pizza"
+        android:text="@string/order_pizza"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
         android:id="@+id/currentOrderButton"
         style="@style/ButtonStyle"
         android:layout_marginTop="208dp"
-        android:text="Current Orders"
+        android:text="@string/current_orders"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/orderButton" />
@@ -29,7 +29,7 @@
         android:id="@+id/storeOrderButton"
         style="@style/ButtonStyle"
         android:layout_marginTop="32dp"
-        android:text="Store Orders"
+        android:text="@string/store_orders"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
     <Button
         android:id="@+id/buildYourOwnButton"
         style="@style/ButtonStyle"
-        android:text="Build Your Own"
+        android:text="@string/build_your_own"
         app:layout_constraintBottom_toTopOf="@+id/currentOrderButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

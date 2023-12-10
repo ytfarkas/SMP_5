@@ -26,10 +26,11 @@
 
     <Button
         android:id="@+id/cancelStoreOrderButton"
+        style="@style/ButtonStyle"
         android:layout_width="141dp"
         android:layout_height="84dp"
         android:layout_marginBottom="68dp"
-        android:text="Cancel Order"
+        android:text="@string/cancel_order"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.866"
@@ -37,10 +38,11 @@
 
     <TextView
         android:id="@+id/storeOrderPrice"
-        android:layout_width="79dp"
-        android:layout_height="45dp"
+        android:layout_width="76dp"
+        android:layout_height="38dp"
         android:layout_marginStart="88dp"
         android:layout_marginBottom="96dp"
+        android:text="@string/subtotal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -52,7 +54,7 @@
         android:layout_marginBottom="96dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Total:"
+        android:text="@string/subtotal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/storeOrderPrice"
         app:layout_constraintHorizontal_bias="0.133"
