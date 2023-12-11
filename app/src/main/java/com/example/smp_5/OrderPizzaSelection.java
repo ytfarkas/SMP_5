@@ -26,8 +26,8 @@ public class OrderPizzaSelection extends AppCompatActivity {
     private TextView pizzaName;
     private TextView toppingsDesc;
     private ImageView imageSelection;
-    private CheckBox extraSauce;
-    private CheckBox extraCheese;
+    private CheckBox xtraSauce;
+    private CheckBox xtraCheese;
     private TextView priceTV;
     private Double price;
     private Button addToCart;
@@ -51,8 +51,8 @@ public class OrderPizzaSelection extends AppCompatActivity {
         pizzaName = findViewById(R.id.pizzaNameSelection);
         toppingsDesc = findViewById(R.id.toppingOrderSelection);
         imageSelection = findViewById(R.id.orderPizzaSelectionImage);
-        extraSauce = findViewById(R.id.extraSauceCheckbox);
-        extraCheese = findViewById(R.id.extraCheeseCheckbox);
+        xtraSauce = findViewById(R.id.extraSauceCheckbox);
+        xtraCheese = findViewById(R.id.extraCheeseCheckbox);
         priceTV = findViewById(R.id.priceTextView);
         addToCart = findViewById(R.id.addToCart);
 
@@ -62,10 +62,10 @@ public class OrderPizzaSelection extends AppCompatActivity {
 
         initializeSpinner(pizzaSize);
         spinnerListener();
-        checkboxListener(extraSauce, extraCheese);
+        checkboxListener(xtraSauce, xtraCheese);
         AddToCartButtonListener();
 
-        updatePrice(price, pizzaSize.getSelectedItem().toString(), extraSauce.isChecked(), extraCheese.isChecked());
+        updatePrice(price, pizzaSize.getSelectedItem().toString(), xtraSauce.isChecked(), xtraCheese.isChecked());
 
 
 
@@ -91,37 +91,35 @@ public class OrderPizzaSelection extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedSize = pizzaSize.getItemAtPosition(position).toString();
-                updatePrice(price, selectedSize, extraSauce.isChecked(), extraCheese.isChecked());
+                updatePrice(price, selectedSize, xtraSauce.isChecked(), xtraCheese.isChecked());
 
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
     }
-    public void checkboxListener(CheckBox extraSauce, CheckBox extraCheese){
-     extraSauce.setOnCheckedChangeListener((buttonView, isChecked) -> {
-         updatePrice(price, pizzaSize.getSelectedItem().toString(), isChecked, extraCheese.isChecked());
+    public void checkboxListener(CheckBox xtraSauce, CheckBox xtraCheese){
+     xtraSauce.setOnCheckedChangeListener((buttonView, isChecked) -> {
+         updatePrice(price, pizzaSize.getSelectedItem().toString(), isChecked, xtraCheese.isChecked());
      });
-     extraCheese.setOnCheckedChangeListener((buttonView, isChecked) -> {
-         updatePrice(price, pizzaSize.getSelectedItem().toString(), extraSauce.isChecked(), isChecked);
+     xtraCheese.setOnCheckedChangeListener((buttonView, isChecked) -> {
+         updatePrice(price, pizzaSize.getSelectedItem().toString(), xtraSauce.isChecked(), isChecked);
      });
  }
  public void AddToCartButtonListener(){
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 Pizza pizza =  PizzaMaker.createPizza(pizzaName.getText().toString());
                 pizza.size = Size.valueOf(pizzaSize.getSelectedItem().toString().toUpperCase());
-                pizza.extraCheese = extraCheese.isSelected();
-                pizza.extraSauce = extraSauce.isSelected();
+                pizza.extraCheese = xtraCheese.isChecked();
+                pizza.extraSauce = xtraSauce.isChecked();
                 orderData.addToCurrentOrder(pizza);
                 Toast.makeText(getApplicationContext(), "Added To Cart", Toast.LENGTH_SHORT).show();
             }
         });
  }
-    public void updatePrice(Double price, String size, boolean extraSauce, boolean extraCheese){
+    public void updatePrice(Double price, String size, boolean xtraSauce, boolean xtraCheese){
         double pizzaPrice = 0.00;
         if (size.equals("Small")){
             pizzaPrice = price;
@@ -130,10 +128,10 @@ public class OrderPizzaSelection extends AppCompatActivity {
         } else if (size.equals("Large")){
             pizzaPrice = price + 4.00;
         }
-        if (extraSauce){
+        if (xtraSauce){
             pizzaPrice = pizzaPrice+ 1.00;
         }
-        if (extraCheese){
+        if (xtraCheese){
             pizzaPrice = pizzaPrice + 1.00;
         }
         priceTV.setText(String.valueOf(String.format("%.2f", pizzaPrice)));
