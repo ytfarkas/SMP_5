@@ -7,6 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * MainMenu is the main menu activity or app, it has 4 buttons, Order Pizza, Build Your Own, Current Order, and Store Order
+ * This houses all listeners when the button os pressed. it also has our OrderData Singleton Class
+ *
+ * @author David Rahabi, Judah Farkas
+ */
+
 public class MainMenu extends AppCompatActivity {
 
 
@@ -19,6 +26,13 @@ public class MainMenu extends AppCompatActivity {
     private Button storeorders;
 
 
+    /**
+     * onCreate initializes all needed code on create of the activity
+     *
+     * @param savedInstanceState If the activity is being re-initialized after
+     *                           previously being shut down then this Bundle contains the data it most
+     *                           recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +53,10 @@ public class MainMenu extends AppCompatActivity {
     }
 
 
+    /**
+     * BuildYourOwnListener is the button listener for the BuildYourOwn button
+     * it takes you to the build your own activity screen
+     */
     private void BuildYourOwnListener() {
         buildYourOwn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +67,10 @@ public class MainMenu extends AppCompatActivity {
         });
     }
 
+    /**
+     * OrderPizzaListener is the button listener for the OrderPizza button
+     * it takes you to the order pizza activity screen
+     */
     private void OrderPizzaListener() {
         orderPizza.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +82,10 @@ public class MainMenu extends AppCompatActivity {
         });
     }
 
+    /**
+     * currentOrderListener is the button listener for the currentOrder button
+     * it takes you to the current order activity screen
+     */
     private void currentOrderListener() {
         currentorder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +97,10 @@ public class MainMenu extends AppCompatActivity {
         });
     }
 
+    /**
+     * storeOrdersListener is the button listener for the storeOrders button
+     * it takes you to the store orders activity screen
+     */
     private void storeOrdersListener() {
         storeorders.setOnClickListener(new View.OnClickListener() {
             @Override

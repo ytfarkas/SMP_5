@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Penne is an extension of the Pizza class that builds a Penne pizza.
  * This class also outputs the price as well as the string version of a pizza
  *
- * @Author David Rahabi, Judah Farkas
+ * @author David Rahabi, Judah Farkas
  */
 public class Penne extends Pizza {
     /**

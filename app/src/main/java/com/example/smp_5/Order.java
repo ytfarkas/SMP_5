@@ -8,7 +8,7 @@ import java.util.UUID;
  * Order class main purpose is to create the orders for the Order stage
  * it gets the order and holds them in an arrayList along with the order ID
  *
- * @Author David Rahabi, Judah Farkas
+ * @author David Rahabi, Judah Farkas
  */
 
 public class Order {

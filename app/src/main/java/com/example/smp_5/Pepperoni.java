@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Pepperoni is an extension of the Pizza class that builds a Pepperoni pizza.
  * This class also outputs the price as well as the string version of a pizza
  *
- * @Author David Rahabi, Judah Farkas
+ * @author David Rahabi, Judah Farkas
  */
 public class Pepperoni extends Pizza {
     /**

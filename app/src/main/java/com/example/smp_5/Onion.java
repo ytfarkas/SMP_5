@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Onion is an extension of the Pizza class that builds a Onion pizza.
  * This class also outputs the price as well as the string version of a pizza
  *
- * @Author David Rahabi, Judah Farkas
+ * @author David Rahabi, Judah Farkas
  */
 public class Onion extends Pizza {
     /**

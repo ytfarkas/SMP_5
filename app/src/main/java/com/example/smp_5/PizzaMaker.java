@@ -4,7 +4,7 @@ package com.example.smp_5;
  * PizzaMaker is the only method that makes new instances of pizza
  * This class takes in a String input, creates, and returns a new pizza that is able to be added to an order
  *
- * @Author David Rahabi, Judah Farkas
+ * @author David Rahabi, Judah Farkas
  */
 
 public class PizzaMaker {
@@ -27,15 +27,15 @@ public class PizzaMaker {
             pizza = new Supreme();
         } else if (pizzaType.equals("Deluxe")) {
             pizza = new Deluxe();
-        }else if (pizzaType.equals("Cheese")){
+        } else if (pizzaType.equals("Cheese")) {
             pizza = new Cheese();
-        }else if (pizzaType.equals("Beyond")){
+        } else if (pizzaType.equals("Beyond")) {
             pizza = new Beyond();
-        }else if (pizzaType.equals("Onion")){
+        } else if (pizzaType.equals("Onion")) {
             pizza = new Onion();
-        } else if (pizzaType.equals("Artichoke")){
+        } else if (pizzaType.equals("Artichoke")) {
             pizza = new Artichoke();
-        }else if (pizzaType.equals("Penne")){
+        } else if (pizzaType.equals("Penne")) {
             pizza = new Penne();
         } else {  //build your own
             pizza = new BuildYourOwn();
