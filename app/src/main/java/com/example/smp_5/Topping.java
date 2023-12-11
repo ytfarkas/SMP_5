@@ -3,7 +3,7 @@ package com.example.smp_5;
 /**
  * Topping is an enum class that lists all available toppings
  *
- * @Author David Rahabi, Judah Farkas
+ * @author David Rahabi, Judah Farkas
  */
 public enum Topping
 {

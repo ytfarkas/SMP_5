@@ -7,9 +7,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * ViewHolder is the class that uses the viewHolder and puts the data into the recycler view
+ *
+ * @author David Rahabi, Judah Farkas
+ */
+
 public class ViewHolder extends RecyclerView.ViewHolder {
     ImageView pizzaImageView;
     TextView pizzaNameView, toppingNameView, priceTV;
+
+    /**
+     * ViewHolder sets the data into the view
+     * This also sets an onClickListener
+     *
+     * @param itemView               itemView
+     * @param recyclerClickInterface recyclerClickInterface
+     */
     public ViewHolder(@NonNull View itemView, RecyclerClickInterface recyclerClickInterface) {
         super(itemView);
         pizzaImageView = itemView.findViewById(R.id.pizzaPhoto);

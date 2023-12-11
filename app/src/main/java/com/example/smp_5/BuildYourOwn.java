@@ -1,4 +1,5 @@
 package com.example.smp_5;
+
 import java.util.ArrayList;
 
 /**
@@ -64,7 +65,7 @@ public class BuildYourOwn extends Pizza {
         }
 
         String sc = sauce.name();
-        if(sc.contains("_")){
+        if (sc.contains("_")) {
             sc = sc.replace("_", " ");
         }
 

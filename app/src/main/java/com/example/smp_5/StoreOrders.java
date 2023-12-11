@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Store Orders handles the store orders placed. it can add, remove, and cancel orders according to order number
  *
- * @Author David Rahabi, Judah Farkas
+ * @author David Rahabi, Judah Farkas
  */
 
 public class StoreOrders {

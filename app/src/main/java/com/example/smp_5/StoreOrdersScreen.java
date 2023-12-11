@@ -15,6 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+/**
+ * StoreOrderScreen is the activity that displays all of the store orders
+ *
+ * @author David Rahabi, Judah Farkas
+ */
 public class StoreOrdersScreen extends AppCompatActivity {
 
     private ArrayAdapter<String> pizzaListAdapter;
@@ -25,6 +30,13 @@ public class StoreOrdersScreen extends AppCompatActivity {
     private TextView subtotal;
     private Button removeButton;
 
+    /**
+     * onCreate initializes all of the functions needed for this class
+     *
+     * @param savedInstanceState If the activity is being re-initialized after
+     *                           previously being shut down then this Bundle contains the data it most
+     *                           recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,24 +44,32 @@ public class StoreOrdersScreen extends AppCompatActivity {
         storeOrderData = OrderData.getOrderData();
         Initialize();
     }
-    public void Initialize(){
+
+    /**
+     * Initialize initializes all of the functions needed to populate the activity
+     */
+    public void Initialize() {
         orderID = findViewById(R.id.orderIDSpinner);
         ordersListView = findViewById((R.id.storeOrderListView));
         subtotal = findViewById((R.id.storeOrderPrice));
-        removeButton= findViewById(R.id.cancelStoreOrderButton);
+        removeButton = findViewById(R.id.cancelStoreOrderButton);
 
         PopulateSpinner();
         InitializeSpinnerListener();
         RemoveButtonListener();
     }
 
-    public void PopulateSpinner(){
+    /**
+     * PopulateSpinner populated the spinner for the StoreOrderData ID
+     */
+
+    public void PopulateSpinner() {
         ArrayList<Order> orderList = storeOrderData.getStoreOrders().getStoreOrderList();
         ArrayList<Integer> ID = new ArrayList<>();
-        for(Order order: orderList){
+        for (Order order : orderList) {
             ID.add(order.getID());
         }
-        if(ID.isEmpty()){
+        if (ID.isEmpty()) {
             removeButton.setAlpha(0.5f);
             removeButton.setEnabled(false);
         }
@@ -58,17 +78,20 @@ public class StoreOrdersScreen extends AppCompatActivity {
         orderID.setAdapter(adapter);
     }
 
-    public void InitializeSpinnerListener(){
+    /**
+     * InitializeSpinnerListener initializes the spinner listener
+     */
+    public void InitializeSpinnerListener() {
         orderID.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int orderNum = (int) orderID.getSelectedItem();
                 ArrayList<Order> orderList = storeOrderData.getStoreOrders().getStoreOrderList();
                 ArrayList<String> pizzaString = new ArrayList<String>();
-                for (Order order: orderList){
-                    if(order.getID() == orderNum){
+                for (Order order : orderList) {
+                    if (order.getID() == orderNum) {
                         subtotal.setText(String.format("%,.2f", order.getTotalPrice()));
-                        for(Pizza pizza : order.getOrderList()){
+                        for (Pizza pizza : order.getOrderList()) {
                             pizzaString.add(pizza.toString());
                         }
                     }
@@ -84,7 +107,10 @@ public class StoreOrdersScreen extends AppCompatActivity {
         });
     }
 
-    private void RemoveButtonListener(){
+    /**
+     * RemoveButtonListener initializes the listener for when the remove button is selected to remove the pizza from the storeOrder
+     */
+    private void RemoveButtonListener() {
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

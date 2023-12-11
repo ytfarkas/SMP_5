@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * it has the Toppings, Size, Sauce, extraCheese, and extraSauce available to be edited by different pizza instances
  * This also has the price function that is a polymorphism fo the other pizza classes
  *
- * @Author Judah Farkas, David Rahabi
+ * @author Judah Farkas, David Rahabi
  */
 
 public abstract class Pizza {
