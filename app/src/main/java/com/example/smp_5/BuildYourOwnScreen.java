@@ -26,8 +26,8 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
     private OrderData orderdata;
 
     private Button addToCartButton;
-    private CheckBox extraSauce;
-    private CheckBox extraCheese;
+    private CheckBox xtraSauce;
+    private CheckBox xtraCheese;
     private TextView price;
     private Spinner size;
     private Spinner sauce;
@@ -51,8 +51,8 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
     public void Initialize(){
         toppingsList = findViewById(R.id.toppingListView);
         addToCartButton = findViewById(R.id.bYOAddToCartButton);
-        extraCheese = findViewById(R.id.bYOExtraCheeseCheckbox);
-        extraSauce = findViewById((R.id.bYOExtraSauceCheckbox));
+        xtraCheese = findViewById(R.id.bYOExtraCheeseCheckbox);
+        xtraSauce = findViewById((R.id.bYOExtraSauceCheckbox));
         price = findViewById(R.id.bYOPriceTextView);
         size = findViewById(R.id.bYOSizeSpinner);
         sauce = findViewById(R.id.bYOSauceSpinner);
@@ -91,11 +91,11 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
     }
 
     public void InitializeCheckboxListener(){
-        extraSauce.setOnCheckedChangeListener(((buttonView, isChecked) -> {
+        xtraSauce.setOnCheckedChangeListener(((buttonView, isChecked) -> {
             updatePrice();
         }
         ));
-        extraCheese.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        xtraCheese.setOnCheckedChangeListener((buttonView, isChecked) -> {
             updatePrice();
         });
     }
@@ -155,10 +155,10 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
         } else if (size.getSelectedItem().toString().equals("Large")){
             updatePrice = 12.99;
         }
-        if (extraCheese.isChecked()){
+        if (xtraCheese.isChecked()){
             updatePrice += 1.00;
         }
-        if (extraSauce.isChecked()){
+        if (xtraSauce.isChecked()){
             updatePrice +=1.00;
         }
         if (selectedTopping.size() > 3){
@@ -185,8 +185,8 @@ public class BuildYourOwnScreen extends AppCompatActivity implements AdapterView
                     else{
                         pizza.sauce = Sauce.valueOf(sauce.getSelectedItem().toString().toUpperCase());
                     }
-                    pizza.extraCheese = extraCheese.isSelected();
-                    pizza.extraSauce = extraSauce.isSelected();
+                    pizza.extraCheese = xtraCheese.isChecked();
+                    pizza.extraSauce = xtraSauce.isChecked();
 
                     for(String topping : selectedTopping){
                         if(topping.contains(" ")){
