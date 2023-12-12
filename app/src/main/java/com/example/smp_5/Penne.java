@@ -52,7 +52,7 @@ public class Penne extends Pizza {
     @Override
     public String toString() {
 
-        String str = "[Penne] Penne " +
+        String str = "[Penne] Cheese " +
                 size.name() + " " + sauce.name() + " ";
 
         if (extraSauce) {

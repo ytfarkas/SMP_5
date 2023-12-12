@@ -53,7 +53,7 @@ public class Beyond extends Pizza {
     @Override
     public String toString() {
 
-        String str = "[Beyond] Beyond " +
+        String str = "[Beyond] Beyond Beef, Beyond Bacon " +
                 size.name() + " " + sauce.name() + " ";
 
         if (extraSauce) {
