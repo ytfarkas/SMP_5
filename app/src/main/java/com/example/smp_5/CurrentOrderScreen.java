@@ -140,6 +140,7 @@ public class CurrentOrderScreen extends AppCompatActivity {
             public void onClick(View v) {
                 orderData.removePizza(pizzas.getCheckedItemPosition());
                 removePizza.setEnabled(false);
+                removePizza.setAlpha(0.5f);
                 setOrderText();
                 setPrices();
                 Toast.makeText(getApplicationContext(), "Pizza Removed!", Toast.LENGTH_SHORT).show();
